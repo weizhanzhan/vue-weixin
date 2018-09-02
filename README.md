@@ -8,6 +8,7 @@
        width="250" 
        alt="聊天机器人"
        src="https://github.com/weizhanzhan/Vue_weixin/blob/master/static/imgs/talk.jpg"/>
+  <br/>
   <img 
        width="250" 
        alt="聊天列表"
