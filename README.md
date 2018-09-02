@@ -7,7 +7,7 @@
   <li>2018-9-2:完成微信列表和聊天界面，以及机器人功能</li>
 <ul>
 
-## view_img
+<h3>图片展示</h3>
 <div align=center>
   <img 
        width="250" 
