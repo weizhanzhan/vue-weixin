@@ -1,6 +1,11 @@
 # socket.io-wx
 
-> A Vue.js project
+> A Vue.js project as Weixin!
+
+date
+<ul>
+  <li>2018-9-2:完成微信列表和聊天界面，以及机器人功能</li>
+<ul>
 
 ## view_img
 <div align=center>
