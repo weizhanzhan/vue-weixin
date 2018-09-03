@@ -1,21 +1,25 @@
 # socket.io-wx
 
-> A Vue.js project
+> A Vue.js project as Weixin!
 
-## Build Setup
+<h3>日期进程</h3>
+<ul>
+  <li>2018-9-2:完成微信列表和聊天界面，以及机器人功能</li>
+<ul>
 
-``` bash
-# install dependencies
-npm install
+<h3>图片展示</h3>
+<div align=center>
+  <img 
+       width="250" 
+       alt="聊天机器人"
+       src="https://github.com/weizhanzhan/Vue_weixin/blob/master/static/imgs/talk.jpg"/>
+  <br/>
+  <img 
+       width="250" 
+       alt="聊天列表"
+       src="https://github.com/weizhanzhan/Vue_weixin/blob/master/static/imgs/列表.jpg"/>
+</div>
 
-# serve with hot reload at localhost:8080
-npm run dev
 
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
 
 For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
