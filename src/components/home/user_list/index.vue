@@ -7,7 +7,7 @@
             :info="m"
         >
         </user-item>
-        <div class="user_list" v-for="(user,index) of userItems" :key="index">
+        <div class="user_list" v-for="(user,index) of userItems" :key="index" :ref="index+'s'">
             <div class="list_word">{{index}}</div>
             <user-item 
                 v-for="m in user" 
@@ -15,12 +15,19 @@
                 :info="m"
             >
             </user-item>
-        </div>
-        <div class="slider-menu">
-          <div v-for="(user,index) of userItems" :key="'a'+index">{{index}}</div>
-        </div>
+        </div>       
       </div>
-      
+      <div class="slider-menu" :style="[touchStatus?touchBgColor:'']">
+          <div
+            class="menu_item"
+            v-for="(user,index) in word" 
+            :key="'a'+index"
+            @touchstart="handleTouchStart"
+            @touchmove="handleTouchMove"
+            @touchend="handleTouchEnd"
+            :ref="user"
+            >{{user}}</div>
+        </div>
     </div>
 </template>
 
@@ -58,15 +65,47 @@ export default {
                 },
                 
             ],
-            userItems:{}
+            userItems:{},
+            startY:"",
+            word:[],
+            touchStatus:false,
+            touchBgColor:{
+                "background": '#878787'
+            }
         }
+    },
+    methods:{
+        handleTouchStart () {
+            this.touchStatus=true
+        },
+        handleTouchMove (e) {
+            const touchY=e.touches[0].clientY-38  //触摸的高度
+            const index=Math.floor((touchY-this.startY) /14.4 ) //除去每个的高度 判断index           
+            if(this.word[index]){
+                this.$nextTick(()=>{
+                    if(this.timer)
+                        clearTimeout(this.timer)
+                    this.timer=setTimeout(()=>{ //节流减少move滑动频率 ，函数节流
+                        const word=this.word[index]
+                        const e=this.$refs[word+'s']
+                        this.scroll.scrollToElement(e[0])
+                    })
+                })
+            }
+        },
+        handleTouchEnd () {
+            this.touchStatus=false
+        }
+    },
+    updated () {
+        console.log("w")
     },
     created () {
         for(var i=0;i<26;i++){      
           let key=String.fromCharCode(65+i)
       //    key={}
-        let name=""
-     
+          let name=""
+          this.word.push(key)
           this.userItems[key]=[
               {
                  name:'张三',
@@ -82,12 +121,14 @@ export default {
               }
           ]
         }
-        console.log(this.userItems)
     },
     mounted () {
         let e = this.$refs.userlist
         this.scroll = new BScroll (e,{})
-        console.log(e)
+        this.$nextTick(()=>{
+
+            this.startY=this.$refs['A'][0].offsetTop//获取a 到顶部的距离
+        })
     },
     components:{
         userItem
@@ -106,7 +147,18 @@ export default {
 }
 .slider-menu{
     position: fixed;
-    top: 0;
+    top: 1.2rem;
+    bottom: 1.5rem;
     right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    /* font-size: .3rem; */
+    width: .5rem;
+
+}
+.menu_item{
+    line-height: .45rem
 }
 </style>
