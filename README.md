@@ -6,6 +6,7 @@
 <ul>
   <li>2018-9-2:完成微信列表和聊天界面，以及机器人功能</li>
   <li>2018-9-4:完成微信通信录界面，以及边侧滑动字幕跳转对象element</li>
+  <li>2018-9-5:完成微信发现和我的界面</li>
 <ul>
 
 <h3>图片展示</h3>
@@ -24,6 +25,16 @@
        width="250" 
        alt="通信录"
        src="https://github.com/weizhanzhan/Vue_weixin/blob/master/static/imgs/通信录.jpg"/>
+       <br/>
+  <img 
+       width="250" 
+       alt="发现"
+       src="https://github.com/weizhanzhan/Vue_weixin/blob/master/static/imgs/发现.jpg"/>
+       <br/>
+  <img 
+       width="250" 
+       alt="me"
+       src="https://github.com/weizhanzhan/Vue_weixin/blob/master/static/imgs/me.jpg"/>
 </div>
 
 

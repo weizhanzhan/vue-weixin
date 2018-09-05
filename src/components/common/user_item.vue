@@ -4,12 +4,17 @@
             <span 
                 v-if="info.avatar"
                 class="iconfont avatar" 
-                :style="{'background':info.bg_color}"
+                :style="{'background':info.bg_color,'color':info.font_color}"
                 v-html="info.avatar">
             </span>
             <img v-else :src="info.img">
         </div>
         <div class="user_name">{{info.name}}</div>
+    <div class="info_img" v-if="info.info_img">
+        <img :src="info.info_img" />
+        <!-- <wv-badge class="wx_badge" is-dot style="position: relative;top: -.35rem;right: .2rem;">8</wv-badge> -->
+        <div class="info_badge"></div>
+    </div>
     </div>
 </template>
 
@@ -42,5 +47,21 @@ export default {
     flex: 1;
     font-size: .4rem;
     line-height: 1rem
+}
+.info_img{
+    flex: 0 0 1.5rem;
+    line-height: 1rem;
+}
+.info_img img{
+    width: .8rem;
+}
+.info_badge{
+    width: .25rem;
+    height: .25rem;
+    background: red;
+    position: absolute;
+    right: .7rem;
+    top: 0.1rem;
+    border-radius: 50%
 }
 </style>
