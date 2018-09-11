@@ -12,7 +12,6 @@
         <div class="user_name">{{info.name}}</div>
     <div class="info_img" v-if="info.info_img">
         <img :src="info.info_img" />
-        <!-- <wv-badge class="wx_badge" is-dot style="position: relative;top: -.35rem;right: .2rem;">8</wv-badge> -->
         <div class="info_badge"></div>
     </div>
     </div>

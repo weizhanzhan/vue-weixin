@@ -28,6 +28,7 @@
             :ref="user"
             >{{user}}</div>
         </div>
+        <div class="touch_word" v-if="touch_word">{{touch_word}}</div>
     </div>
 </template>
 
@@ -63,6 +64,7 @@ export default {
                     id:'04',
                     bg_color:"#79CDCD"
                 },
+
                 
             ],
             userItems:{},
@@ -71,12 +73,14 @@ export default {
             touchStatus:false,
             touchBgColor:{
                 "background": '#878787'
-            }
+            },
+            touch_word:''
         }
     },
     methods:{
         handleTouchStart () {
             this.touchStatus=true
+            this.touch_word=''
         },
         handleTouchMove (e) {
             const touchY=e.touches[0].clientY-38  //触摸的高度
@@ -87,6 +91,7 @@ export default {
                         clearTimeout(this.timer)
                     this.timer=setTimeout(()=>{ //节流减少move滑动频率 ，函数节流
                         const word=this.word[index]
+                        this.touch_word=word
                         const e=this.$refs[word+'s']
                         this.scroll.scrollToElement(e[0])
                     })
@@ -95,6 +100,7 @@ export default {
         },
         handleTouchEnd () {
             this.touchStatus=false
+            this.touch_word=''
         }
     },
     updated () {
@@ -160,5 +166,18 @@ export default {
 }
 .menu_item{
     line-height: .45rem
+}
+.touch_word{
+    height: 2rem;
+    width: 2rem;
+    background: #8B8B83;
+    position: fixed;
+    top: 6rem;
+    left: 4rem;
+    text-align: center;
+    line-height: 2rem;
+    font-size: 1.5rem;
+    color:white;
+    border-radius: 0.2rem
 }
 </style>

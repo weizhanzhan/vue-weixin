@@ -1,16 +1,16 @@
 <template>
     <div ref="list">
          <div>
-            <div class="list-menu"></div>
+             <list-item></list-item>
             <div 
                 class="list_item"
                 v-for="user in users"
                 :key="user.id"
             >
-                <div class="list-img ">
+                <div class="list-img " @click="$router.push('/info')">
                     <img :src="user.avatar">
                 </div>
-                <div class="list-content">
+                <div class="list-content" @click="$router.push('/info')">
                     <div class="list_user">
                         <div class="user_name">{{user.name}}</div>
                     </div>
@@ -22,11 +22,12 @@
             </div>       
           </div>
           <div v-for="(menu,index) in menu_list" :key="'m'+index">
-              <div class="list-menu"></div>
+              <list-item></list-item>
               <user-item
                   v-for="list in menu"
                   :key="list.id"
                   :info="list"
+                  @click.native="go(list.path)"
               ></user-item>
           </div>
     </div>
@@ -34,6 +35,7 @@
 
 <script>
 import userItem from '../../common/user_item'
+import listItem from '../../common/list_item'
 export default {
     data () {
         return {
@@ -53,6 +55,7 @@ export default {
                         name:"钱包",
                         avatar:"&#xe649;",
                         id:'01',
+                        path:'/wallet',
                         font_color:'#7EC0EE',
                     }
                 ],
@@ -87,8 +90,15 @@ export default {
             ] 
         }
     },
+    methods:{
+        go (path) {
+            if(path)
+                this.$router.push(path)
+        }
+    },
     components :{
-        userItem
+        userItem,
+        listItem
     }
 }
 </script>
@@ -129,10 +139,5 @@ export default {
     line-height: 2rem;
     text-align: center
 }
-.list-menu{
-    width: 100%;
-    background: #eeeeee;
-    height: .4rem;
-    padding: .1rem .2rem
-}
+
 </style>

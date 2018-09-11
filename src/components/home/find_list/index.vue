@@ -1,7 +1,7 @@
 <template>
     <div>
       <div v-for="(list,index) in find_list" :key="index">
-        <div class="list-menu"></div>
+        <list-item></list-item>
         <user-item 
             v-for="list in list" 
             :key="list.id" 
@@ -13,6 +13,7 @@
 
 <script>
 import userItem from '../../common/user_item'
+import listItem from '../../common/list_item'
 export default {
     data () {
         return {
@@ -58,17 +59,13 @@ export default {
         }
     },
     components : {
-        userItem
+        userItem,
+        listItem
     }
 
 }
 </script>
 
 <style scoped>
-.list-menu{
-    width: 100%;
-    background: #eeeeee;
-    height: .4rem;
-    padding: .1rem .2rem
-}
+
 </style>
