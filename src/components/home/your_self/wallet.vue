@@ -5,19 +5,55 @@
             :style="opacityStyle"
             :class="{'header':scroll_change}">
         </header-bar>
-        <div class="content">
+        <div class="content" ref="list">
+            <!-- <div> -->
             <div class="content-wrapper" >
-                <div>首付款</div>
-                <div>零钱</div>
-                <div>银行卡</div>
+                <div class="wrapper-list">
+                    <div class="iconfont">&#xe649;</div>
+                    <div>首付款</div>
+                </div>
+                <div class="wrapper-list">                 
+                    <div class="iconfont">&#xe625;</div>
+                    <div>零钱</div>
+                    <div class="price">￥8888</div>                            
+                </div>
+                <div class="wrapper-list">
+                    <div class="iconfont">&#xe66a;</div>
+                    <div>银行卡</div>  
+                </div>
             </div>
+            <list-item class="item-list"></list-item>
+            <grid></grid>
+            <!-- <wv-grid>
+                <wv-grid-item to="/">
+                    <div class="iconfont">&#xe64b;</div>
+                    <span slot="label">信用卡还款</span>
+                </wv-grid-item>
+                <wv-grid-item url="/">
+                    <span class="iconfont">&#xe64b;</span>
+                    <span slot="label">手机充值</span>
+                </wv-grid-item>
+                <wv-grid-item>
+                    <span class="iconfont">&#xe64b;</span>
+                    <span slot="label">理财通</span>
+                </wv-grid-item>
+                <wv-grid-item>
+                    <span class="iconfont">&#xe64b;</span>
+                    <span slot="label">理财通</span>
+                </wv-grid-item>
+
+            </wv-grid> -->
             <div v-for="n in 70" :key="n">{{scroll_change}}</div>
+            <!-- </div> -->
         </div>
     </div>
 </template>
 
 <script>
 import HeaderBar from '../../common/headerBar'
+import Grid from '../../common/grid'
+import listItem from '../../common/list_item'
+// import BScroll from 'better-scroll'
 export default {
     data () {
         return {
@@ -33,7 +69,9 @@ export default {
         }
     },
     components : {
-        HeaderBar
+        HeaderBar,
+        listItem,
+        Grid
     },
     methods:{
         handle_scroll () {
@@ -41,12 +79,18 @@ export default {
             if(t<110){
                 if(t>50){
                     let opacity= t/130
-                    opacity=opacity>1||opacity<.55 ? 1 :opacity
+                    opacity=opacity>1||opacity<.75 ? 1 :opacity
                     this.opacityStyle={ opacity }
-                }          
+                    console.log(1)
+                }
+                else{
+                    let opacity=1
+                    this.opacityStyle={ opacity }
+                }         
                 this.scroll_change=true
             }           
             else{
+                console.log(2)
                 let opacity= t/180             
                 opacity=opacity>1 ? 1 :opacity
                 this.opacityStyle={ opacity }
@@ -57,6 +101,7 @@ export default {
     },
     mounted(){
         window.addEventListener("scroll",this.handle_scroll)
+    //    this.bscroll= new BScroll(this.$refs.list)
     }
 
 }
@@ -64,19 +109,34 @@ export default {
 
 <style>
 .header{
-    background: #B0B0B0!important;
+    background: #6E6E6E!important;
    
 }
 .content{
     position: absolute;
     top:1.2rem;
+    /* bottom: 0; */
     width: 100%;
     overflow: hidden;
-    top:1.2rem;
 }
 .content-wrapper{
-    height: 2.5rem;
+    height: 2.8rem;
     width: 100%;
-    background: #B0B0B0
+    background: #6E6E6E;
+    display: flex
+}
+.wrapper-list{
+    width: 33.3%;
+    text-align: center;
+    line-height: .9rem;
+    color: #ffffff;
+    font-size: .4rem
+}
+.price{
+    font-size: .3rem;
+    color: #D8D8D8
+}
+.item-list{
+    height: .2rem!important;
 }
 </style>
