@@ -1,62 +1,51 @@
 import Router from 'vue-router'
 import Vue from 'vue'
 
-import Home from '../components/home/home.vue'
-import TalkPage from '../components/talkPage'
-import Info from '../components/home/your_self/info'
-import Wallet from '../components/home/your_self/wallet'
-
-//二级目录
-import MsgList from '../components/home/msg_list'
-import UserList from '../components/home/user_list'
-import FindList from '../components/home/Find_list'
-import YourSelf from '../components/home/your_self'
-
 Vue.use(Router)
 export const router =new Router({
     routes:[
         {
             path:"/",
             name:"主页",
-            component:Home,
+            component:()=>import('../views/layout.vue'),
             redirect:'/msg',
             children:[
                 {
                     path:"/msg",
                     name:"微信",
-                    component:MsgList
+                    component:()=>import('../views/_msg')
                 },
                 {
                     path:"/users",
                     name:"通信录",
-                    component:UserList 
+                    component:()=>import('../views/_users') 
                 },
                 {
                     path:'/find',
                     name:"发现",
-                    component:FindList
+                    component:()=>import('../views/_find')
                 },
                 {
                     path:"/mine",
                     name:"我",
-                    component:YourSelf
+                    component:()=>import('../views/_self')
                 }
             ]
         },
         {
             path:"/talk",
             name:"聊天",
-            component:TalkPage
+            component:()=>import('../components/talkPage')
         },
         {
             path:'/info',
             name:"个人信息",
-            component:Info
+            component:()=>import('../views/_self/info.vue')
         },
         {
             path:'/wallet',
             name:'我的钱包',
-            component:Wallet
+            component:()=>import('../views/_self/wallet.vue')
         }
     ],
     mode:"history"

@@ -30,8 +30,8 @@
 </template>
 
 <script>
-import listItem from '../../common/list_item'
-import HeaderBar from '../../common/headerBar'
+import listItem from '../../components/common/list_item'
+import HeaderBar from '../../components/common/headerBar'
 export default {
     data () {
         return {

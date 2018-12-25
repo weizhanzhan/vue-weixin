@@ -50,9 +50,9 @@
 </template>
 
 <script>
-import HeaderBar from '../../common/headerBar'
-import Grid from '../../common/grid'
-import listItem from '../../common/list_item'
+import HeaderBar from '../../components/common/headerBar'
+import Grid from '../../components/common/grid'
+import listItem from '../../components/common/list_item'
 // import BScroll from 'better-scroll'
 export default {
     data () {

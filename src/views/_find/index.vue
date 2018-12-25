@@ -12,8 +12,8 @@
 </template>
 
 <script>
-import userItem from '../../common/user_item'
-import listItem from '../../common/list_item'
+import userItem from '../../components/common/user_item'
+import listItem from '../../components/common/list_item'
 export default {
     data () {
         return {

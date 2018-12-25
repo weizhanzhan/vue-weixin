@@ -34,7 +34,7 @@
 
 <script>
 import BScroll from 'better-scroll'
-import userItem from '../../common/user_item'
+import userItem from '../../components/common/user_item'
 export default {
     data () {
         return {
