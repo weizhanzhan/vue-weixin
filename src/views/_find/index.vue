@@ -2,11 +2,25 @@
     <div>
       <div v-for="(list,index) in find_list" :key="index">
         <list-item></list-item>
-        <user-item 
+        <!-- <user-item 
             v-for="list in list" 
             :key="list.id" 
             :info="list">
-        </user-item>
+        </user-item> -->
+        <row-item
+            v-for="list in list" 
+            :key = "list.id"
+            :icon="list.avatar"
+            :label="list.name"
+            :icon-color="list.font_color"
+            :image="list.img"
+        >
+            <div  slot="right-img" v-if="list.info_img">
+                <img  :src="list.info_img">
+                <div class="info_badge"></div>
+            </div>
+            
+        </row-item>
       </div>
     </div>
 </template>
@@ -14,6 +28,7 @@
 <script>
 import userItem from '../../components/common/user_item'
 import listItem from '../../components/common/list_item'
+import RowItem from '../../components/common/row-item'
 export default {
     data () {
         return {
@@ -50,9 +65,10 @@ export default {
                     },
                     {
                         name:'漂流瓶',
+                        avatar:"&#xe642;",
                         id:'05',
-                        font_color:'',
-                        img:require('@/assets/imgs/plp.png')
+                        font_color:'#7EC0EE',
+                        // img:require('@/assets/imgs/plp.png')
                     }
                 ]
             ]
@@ -60,7 +76,8 @@ export default {
     },
     components : {
         userItem,
-        listItem
+        listItem,
+        RowItem
     }
 
 }

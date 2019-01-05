@@ -7,7 +7,7 @@ import WeVue from 'we-vue'
 import 'we-vue/lib/style.css'
 
 require('./assets/css/reset.css')
-require('./assets/css/iconfont.css')
+require('./assets/icon/iconfont.css')
 require('./assets/css/border.css')
 import 'lib-flexible/flexible.js'
 import axios from 'axios'

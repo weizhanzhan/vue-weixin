@@ -1,5 +1,5 @@
 <template>
-    <wv-tabbar style="position:fixed;height:1.5rem">
+    <wv-tabbar>
       <wv-tabbar-item to="/msg" :is-on="is_select('微信')" class="wx_tabbar_item"> 
         <span slot="icon" style="display: inline-block; position: relative;">
           <span class="iconfont wx_icon" :style="[is_select('微信')?select_color:'']">&#xe61c;</span>
@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .wx_navbar_text{
     font-size: 0.35rem
 }

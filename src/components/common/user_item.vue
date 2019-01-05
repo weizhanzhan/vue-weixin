@@ -13,6 +13,7 @@
     <div class="info_img" v-if="info.info_img">
         <img :src="info.info_img" />
         <div class="info_badge"></div>
+        
     </div>
     </div>
 </template>

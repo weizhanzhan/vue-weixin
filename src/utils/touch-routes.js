@@ -5,7 +5,7 @@ export const touchPushRouter = (name,direction) =>{
     let index=  routes.findIndex(route=>{
         return route.name==name
     })
-    console.log(index+direction)
+
     if(index+direction>=0&&index+direction<routes.length)
     router.push(routes[index+direction])
     //return index

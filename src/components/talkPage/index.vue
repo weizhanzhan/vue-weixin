@@ -86,7 +86,7 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
 .tab_input{
     flex: 0 0 8rem;
     line-height: 1.3rem;

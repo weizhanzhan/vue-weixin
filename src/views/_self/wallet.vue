@@ -24,25 +24,6 @@
             </div>
             <list-item class="item-list"></list-item>
             <grid></grid>
-            <!-- <wv-grid>
-                <wv-grid-item to="/">
-                    <div class="iconfont">&#xe64b;</div>
-                    <span slot="label">信用卡还款</span>
-                </wv-grid-item>
-                <wv-grid-item url="/">
-                    <span class="iconfont">&#xe64b;</span>
-                    <span slot="label">手机充值</span>
-                </wv-grid-item>
-                <wv-grid-item>
-                    <span class="iconfont">&#xe64b;</span>
-                    <span slot="label">理财通</span>
-                </wv-grid-item>
-                <wv-grid-item>
-                    <span class="iconfont">&#xe64b;</span>
-                    <span slot="label">理财通</span>
-                </wv-grid-item>
-
-            </wv-grid> -->
             <div v-for="n in 70" :key="n">{{scroll_change}}</div>
             <!-- </div> -->
         </div>
@@ -110,7 +91,6 @@ export default {
 <style>
 .header{
     background: #6E6E6E!important;
-   
 }
 .content{
     position: absolute;
