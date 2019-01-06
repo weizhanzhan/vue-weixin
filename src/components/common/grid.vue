@@ -2,7 +2,7 @@
     <div class="grid">
         <div class="grid-title">腾讯服务</div>
         <div 
-            v-for="n in 10" 
+            v-for="n in 30" 
             :key="n" 
             class="grid-item border">
             <div class="iconfont">&#xe64b;</div>

@@ -12,6 +12,7 @@
         <div class="user_name">{{label}}</div>
     <div class="info_img">
         <slot name="right-img" ></slot>
+        
     </div>
    
     </div>

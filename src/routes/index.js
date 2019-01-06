@@ -48,6 +48,6 @@ export const router =new Router({
             component:()=>import('../views/_self/wallet.vue')
         }
     ],
-    mode:"history"
+  //  mode:"history"
 })
 

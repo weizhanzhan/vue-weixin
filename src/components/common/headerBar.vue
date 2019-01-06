@@ -35,9 +35,12 @@ export default {
 }
 </script>
 
-<style scoped>
+<style>
+.wv-header{
+    height: 1.2rem !important;
+}
 .wx_header{
-    height: 1.2rem;
+    /* height: 1.2rem; */
 }
 .title_left{
     font-size: 0.5rem;
