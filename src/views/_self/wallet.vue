@@ -15,7 +15,7 @@
                 <div class="wrapper-list">                 
                     <div class="iconfont">&#xe625;</div>
                     <div>零钱</div>
-                    <div class="price">￥8888</div>                            
+                    <div class="price">￥ 8888</div>                            
                 </div>
                 <div class="wrapper-list">
                     <div class="iconfont">&#xe66a;</div>
@@ -24,7 +24,7 @@
             </div>
             <list-item class="item-list"></list-item>
             <grid></grid>
-            <div v-for="n in 70" :key="n">{{scroll_change}}</div>
+            
             <!-- </div> -->
         </div>
     </div>
