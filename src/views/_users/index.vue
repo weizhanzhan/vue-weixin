@@ -1,40 +1,43 @@
 <template>
     <div ref="userlist">
-      <div>
-        <user-item 
-            v-for="m in menu" 
-            :key="m.id"
-            :info="m"
-        >
-        </user-item>
-        <div class="user_list" v-for="(user,index) of userItems" :key="index" :ref="index+'s'">
-            <div class="list_word">{{index}}</div>
-            <user-item 
-                v-for="m in user" 
+        <div>
+            <row-item
+                v-for="m in menu" 
                 :key="m.id"
-                :info="m"
+                :icon="m.avatar"
+                :label="m.name"
+                :bg-color="m.bg_color"
             >
-            </user-item>
-        </div>       
-      </div>
-      <div class="slider-menu" :style="[touchStatus?touchBgColor:'']">
-          <div
-            class="menu_item"
-            v-for="(user,index) in word" 
-            :key="'a'+index"
-            @touchstart="handleTouchStart"
-            @touchmove="handleTouchMove"
-            @touchend="handleTouchEnd"
-            :ref="user"
+            </row-item>
+            <div class="user_list" v-for="(user,index) of userItems" :key="index" :ref="index+'s'">
+                <div class="list_word">{{index}}</div>
+                <row-item
+                    v-for="m in user" 
+                    :key="m.id"
+                    :image="m.img"
+                    :label="m.name"
+                >
+                </row-item>
+            </div>       
+        </div>
+        <div class="slider-menu" :style="[touchStatus?touchBgColor:'']">
+            <div
+                class="menu_item"
+                v-for="(user,index) in word" 
+                :key="'a'+index"
+                @touchstart="handleTouchStart"
+                @touchmove="handleTouchMove"
+                @touchend="handleTouchEnd"
+                :ref="user"
             >{{user}}</div>
         </div>
         <div class="touch_word" v-if="touch_word">{{touch_word}}</div>
     </div>
 </template>
-
 <script>
 import BScroll from 'better-scroll'
-import userItem from '../../components/common/user_item'
+import RowItem from '../../components/common/row-item'
+import RightList from './right-list.vue'
 export default {
     data () {
         return {
@@ -103,13 +106,9 @@ export default {
             this.touch_word=''
         }
     },
-    updated () {
-        console.log("w")
-    },
     created () {
         for(var i=0;i<26;i++){      
           let key=String.fromCharCode(65+i)
-      //    key={}
           let name=""
           this.word.push(key)
           this.userItems[key]=[
@@ -132,12 +131,11 @@ export default {
         let e = this.$refs.userlist
         this.scroll = new BScroll (e,{})
         this.$nextTick(()=>{
-
             this.startY=this.$refs['A'][0].offsetTop//获取a 到顶部的距离
         })
     },
     components:{
-        userItem
+        RowItem
     }
 
 }

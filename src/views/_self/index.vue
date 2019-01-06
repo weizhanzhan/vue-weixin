@@ -1,12 +1,8 @@
 <template>
     <div ref="list">
-         <div>
-             <list-item></list-item>
-            <div 
-                class="list_item"
-                v-for="user in users"
-                :key="user.id"
-            >
+        <div>
+            <list-item></list-item>
+            <div class="list_item" v-for="user in users" :key="user.id">
                 <div class="list-img " @click="$router.push('/info')">
                     <img :src="user.avatar">
                 </div>
@@ -19,125 +15,129 @@
                 <div class="list_ewm">
                     <span class="iconfont">&#xe668;</span>
                 </div>
-            </div>       
-          </div>
-          <div v-for="(menu,index) in menu_list" :key="'m'+index">
-              <list-item></list-item>
-              <user-item
-                  v-for="list in menu"
-                  :key="list.id"
-                  :info="list"
-                  @click.native="go(list.path)"
-              ></user-item>
-          </div>
+            </div>
+        </div>
+        <div v-for="(menu,index) in menu_list" :key="'m'+index">
+        <list-item></list-item>
+        <row-item 
+            v-for="list in menu" 
+            :key="list.id"
+            :label="list.name"
+            :icon="list.avatar"
+            :icon-color="list.font_color"
+            @click.native="go(list.path)"
+        ></row-item>
+        </div>
     </div>
 </template>
 
 <script>
-import userItem from '../../components/common/user_item'
-import listItem from '../../components/common/list_item'
-export default {
-    data () {
-        return {
-            users:[
-              {
-                  name:"zhanwei",
-                  id:"001",
-                  date:"2018-9-2",
-                  avatar:require('@/assets/imgs/me.jpg'),
-                  weixin_num:"weizhan675398552"
-                 
-              }
-           ],
-           menu_list:[
-                [
-                    {
-                        name:"钱包",
-                        avatar:"&#xe649;",
-                        id:'01',
-                        path:'/wallet',
-                        font_color:'#7EC0EE',
-                    }
-                ],
-                [
-                    {
-                        name:'收藏',
-                        avatar:"&#xe646;",
-                        id:'02',
-                        font_color:'#4169E1'
-                    },
-                    {
-                        name:'相册',
-                        avatar:"&#xe621;",
-                        id:'03',
-                        font_color:'royalblue'
-                    },
-                    {
-                        name:"卡包",
-                        avatar:'&#xe61d;',
-                        id:'04',
-                        font_color:'#4169E1'
-                    }
-                ],
-                [
-                    {
-                        name:'设置',
-                        avatar:'&#xe64e;',
-                        id:'05',
-                        font_color:'darkorange'
-                    }
-                ]
-            ] 
-        }
+  import userItem from '../../components/common/user_item'
+  import RowItem from '../../components/common/row-item'
+  import listItem from '../../components/common/list_item'
+  export default {
+    data() {
+      return {
+        users: [{
+          name: "zhanwei",
+          id: "001",
+          date: "2018-9-2",
+          avatar: require('@/assets/imgs/me.jpg'),
+          weixin_num: "weizhan675398552"
+
+        }],
+        menu_list: [
+          [{
+            name: "钱包",
+            avatar: "&#xe649;",
+            id: '01',
+            path: '/wallet',
+            font_color: '#7EC0EE',
+          }],
+          [{
+              name: '收藏',
+              avatar: "&#xe646;",
+              id: '02',
+              font_color: '#4169E1'
+            },
+            {
+              name: '相册',
+              avatar: "&#xe621;",
+              id: '03',
+              font_color: 'royalblue'
+            },
+            {
+              name: "卡包",
+              avatar: '&#xe61d;',
+              id: '04',
+              font_color: '#4169E1'
+            }
+          ],
+          [{
+            name: '设置',
+            avatar: '&#xe64e;',
+            id: '05',
+            font_color: 'darkorange'
+          }]
+        ]
+      }
     },
-    methods:{
-        go (path) {
-            if(path)
-                this.$router.push(path)
-        }
+    methods: {
+      go(path) {
+        if (path)
+          this.$router.push(path)
+      }
     },
-    components :{
-        userItem,
-        listItem
+    components: {
+      userItem,
+      listItem,
+      RowItem
     }
-}
+  }
+
 </script>
 
 <style scoped>
-.list_item{
+  .list_item {
     /* background: #eee; */
     display: flex;
     height: 2rem;
     /* border-bottom: 1px solid #cccccc */
-}
-.list-img{
+  }
+
+  .list-img {
     flex: 0 0 2rem;
-  
-}
-.list-img img{
+
+  }
+
+  .list-img img {
     width: 1.6rem;
     padding: .2rem
-}
-.list-content{
+  }
+
+  .list-content {
     flex: 1
-}
-.list_user{
+  }
+
+  .list_user {
     margin: .4rem 0 .2rem .1rem;
     display: flex
-}
-.user_name{
-    font-size: .5rem
-}
+  }
 
-.list_msg{
+  .user_name {
+    font-size: .5rem
+  }
+
+  .list_msg {
     margin: .2rem 0 .2rem .1rem;
     font-size: .38rem;
     color: #C5C1AA
-}
-.list_ewm{
+  }
+
+  .list_ewm {
     flex: 0 0 2rem;
     line-height: 2rem;
     text-align: center
-}
+  }
 
 </style>

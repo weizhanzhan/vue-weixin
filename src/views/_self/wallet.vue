@@ -6,7 +6,6 @@
             :class="{'header':scroll_change}">
         </header-bar>
         <div class="content" ref="list">
-            <!-- <div> -->
             <div class="content-wrapper" >
                 <div class="wrapper-list">
                     <div class="iconfont">&#xe649;</div>
@@ -24,8 +23,6 @@
             </div>
             <list-item class="item-list"></list-item>
             <grid></grid>
-            
-            <!-- </div> -->
         </div>
     </div>
 </template>

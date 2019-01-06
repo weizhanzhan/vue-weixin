@@ -2,11 +2,6 @@
     <div>
       <div v-for="(list,index) in find_list" :key="index">
         <list-item></list-item>
-        <!-- <user-item 
-            v-for="list in list" 
-            :key="list.id" 
-            :info="list">
-        </user-item> -->
         <row-item
             v-for="list in list" 
             :key = "list.id"
@@ -18,15 +13,13 @@
             <div  slot="right-img" v-if="list.info_img">
                 <img  :src="list.info_img">
                 <div class="info_badge"></div>
-            </div>
-            
+            </div>       
         </row-item>
       </div>
     </div>
 </template>
 
 <script>
-import userItem from '../../components/common/user_item'
 import listItem from '../../components/common/list_item'
 import RowItem from '../../components/common/row-item'
 export default {
@@ -75,7 +68,6 @@ export default {
         }
     },
     components : {
-        userItem,
         listItem,
         RowItem
     }
