@@ -2,7 +2,7 @@
     <div ref="list">
         <div>
             <list-item></list-item>
-            <div class="list_item" v-for="user in users" :key="user.id">
+            <div class="list_item" v-for="user in self.user" :key="user.id">
                 <div class="list-img " @click="$router.push('/info')">
                     <img :src="user.avatar">
                 </div>
@@ -17,16 +17,16 @@
                 </div>
             </div>
         </div>
-        <div v-for="(menu,index) in menu_list" :key="'m'+index">
-        <list-item></list-item>
-        <row-item 
-            v-for="list in menu" 
-            :key="list.id"
-            :label="list.name"
-            :icon="list.avatar"
-            :icon-color="list.font_color"
-            @click.native="go(list.path)"
-        ></row-item>
+        <div v-for="(menu,index) in self.list" :key="'m'+index">
+          <list-item></list-item>
+          <row-item 
+              v-for="list in menu" 
+              :key="list.id"
+              :label="list.name"
+              :icon="list.avatar"
+              :icon-color="list.font_color"
+              @click.native="go(list.path)"
+          ></row-item>
         </div>
     </div>
 </template>
@@ -35,58 +35,16 @@
   import userItem from '../../components/common/user_item'
   import RowItem from '../../components/common/row-item'
   import listItem from '../../components/common/list_item'
+  import Self from '../../mock/self.js'
   export default {
-    data() {
-      return {
-        users: [{
-          name: "zhanwei",
-          id: "001",
-          date: "2018-9-2",
-          avatar: require('@/assets/imgs/me.jpg'),
-          weixin_num: "weizhan675398552"
-
-        }],
-        menu_list: [
-          [{
-            name: "钱包",
-            avatar: "&#xe649;",
-            id: '01',
-            path: '/wallet',
-            font_color: '#7EC0EE',
-          }],
-          [{
-              name: '收藏',
-              avatar: "&#xe646;",
-              id: '02',
-              font_color: '#4169E1'
-            },
-            {
-              name: '相册',
-              avatar: "&#xe621;",
-              id: '03',
-              font_color: 'royalblue'
-            },
-            {
-              name: "卡包",
-              avatar: '&#xe61d;',
-              id: '04',
-              font_color: '#4169E1'
-            }
-          ],
-          [{
-            name: '设置',
-            avatar: '&#xe64e;',
-            id: '05',
-            font_color: 'darkorange'
-          }]
-        ]
-      }
-    },
     methods: {
       go(path) {
         if (path)
           this.$router.push(path)
       }
+    },
+    computed:{
+      self(){ return Self}
     },
     components: {
       userItem,
