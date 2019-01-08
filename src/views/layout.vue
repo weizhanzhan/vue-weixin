@@ -74,7 +74,6 @@
           let endY = ev.changedTouches[0].clientY;
           this.disX = endX - this.startX;
           this.disY = endY - this.startY;
-          console.log( this.disX)
           if (this.disY > -30 && this.disY < 30) { //30是上下滑动的幅度
             if (this.disX > 20) { //20是左右滑动的幅度小于的话就不执行
               this.transitionName = 'slide-right'

@@ -5,14 +5,13 @@
                 v-if="icon"
                 class="iconfont avatar"         
                 :style="{'color':iconColor,'background':bgColor,}" 
-                v-html="icon">
-            </i>
+                v-html="icon"
+            ></i>
             <img :src="image" v-if="image">
         </div>
         <div class="user_name">{{label}}</div>
     <div class="info_img">
-        <slot name="right-img" ></slot>
-        
+        <slot name="right-img" ></slot>  
     </div>
    
     </div>
@@ -21,19 +20,19 @@
 <script>
 export default {
     props:{
-        icon:{
+        icon:{//左边图标
             type:String
         },
-        label:{
+        label:{//中部名称
             type:String
         },
-        iconColor:{
+        iconColor:{//图标颜色
             type:String
         },
-        bgColor:{
+        bgColor:{//图标背景颜色
             type:String
         },
-        image:{
+        image:{//左边图片
             type:String
         }
     }
